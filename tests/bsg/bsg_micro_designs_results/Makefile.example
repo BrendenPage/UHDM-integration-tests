@@ -1,0 +1,12 @@
+export TOP_DIR:=$(shell git rev-parse --show-toplevel)
+
+include $(TOP_DIR)/../bsg_cadenv/cadenv.mk
+
+all:
+	/gro/cad/synopsys/fm/O-2018.06-SP5/bin/fm_shell -file script > shell_out
+
+clean:
+	rm -rf *.log *.lck FM_WORK
+
+clean_all: clean
+	rm -rf script shell_out Makefile
